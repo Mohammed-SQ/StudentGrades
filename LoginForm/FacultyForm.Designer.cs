@@ -46,6 +46,7 @@
             this.searchIdTextBox.Name = "searchIdTextBox";
             this.searchIdTextBox.Size = new System.Drawing.Size(100, 27);
             this.searchIdTextBox.TabIndex = 0;
+            this.searchIdTextBox.Text = "Search ID";
             // 
             // searchButton
             // 
@@ -90,7 +91,7 @@
             // resultLabelToolStripMenuItem
             // 
             this.resultLabelToolStripMenuItem.Name = "resultLabelToolStripMenuItem";
-            this.resultLabelToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.resultLabelToolStripMenuItem.Size = new System.Drawing.Size(236, 34);
             this.resultLabelToolStripMenuItem.Text = "Return to Login";
             this.resultLabelToolStripMenuItem.Click += new System.EventHandler(this.returnToLoginToolStripMenuItem_Click);
             // 
@@ -106,14 +107,14 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 

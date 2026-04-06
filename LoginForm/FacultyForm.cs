@@ -71,7 +71,7 @@ namespace StudentGradesManagementSystem
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Group Members:\nSaleh - 20210001\nMember2 - ID\nMember3 - ID");
+            MessageBox.Show("Group Members:\nRidha - 202013940\nMohammed - 202536470\nAli - 202251460");
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

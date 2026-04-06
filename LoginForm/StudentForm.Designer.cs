@@ -45,16 +45,17 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // studentIdTextBox
             // 
             this.studentIdTextBox.Location = new System.Drawing.Point(72, 65);
+            this.studentIdTextBox.Multiline = true;
             this.studentIdTextBox.Name = "studentIdTextBox";
             this.studentIdTextBox.Size = new System.Drawing.Size(100, 27);
             this.studentIdTextBox.TabIndex = 0;
+            this.studentIdTextBox.Text = "Student ID";
             // 
             // studentNameTextBox
             // 
@@ -62,6 +63,7 @@
             this.studentNameTextBox.Name = "studentNameTextBox";
             this.studentNameTextBox.Size = new System.Drawing.Size(100, 27);
             this.studentNameTextBox.TabIndex = 1;
+            this.studentNameTextBox.Text = "Student Name";
             // 
             // grade1TextBox
             // 
@@ -93,7 +95,7 @@
             // 
             // grade5TextBox
             // 
-            this.grade5TextBox.Location = new System.Drawing.Point(98, 378);
+            this.grade5TextBox.Location = new System.Drawing.Point(98, 371);
             this.grade5TextBox.Name = "grade5TextBox";
             this.grade5TextBox.Size = new System.Drawing.Size(100, 27);
             this.grade5TextBox.TabIndex = 6;
@@ -162,7 +164,7 @@
             // returnToLoginToolStripMenuItem
             // 
             this.returnToLoginToolStripMenuItem.Name = "returnToLoginToolStripMenuItem";
-            this.returnToLoginToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.returnToLoginToolStripMenuItem.Size = new System.Drawing.Size(236, 34);
             this.returnToLoginToolStripMenuItem.Text = "Return to Login";
             this.returnToLoginToolStripMenuItem.Click += new System.EventHandler(this.returnToLoginToolStripMenuItem_Click);
             // 
@@ -178,30 +180,22 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(650, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 27);
-            this.textBox1.TabIndex = 12;
             // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.gpaButton);
             this.Controls.Add(this.viewButton);
@@ -244,6 +238,5 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -38,10 +38,11 @@
             // 
             // usernameTextBox
             // 
-            this.usernameTextBox.Location = new System.Drawing.Point(103, 85);
+            this.usernameTextBox.Location = new System.Drawing.Point(80, 75);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(100, 27);
             this.usernameTextBox.TabIndex = 0;
+            this.usernameTextBox.Text = "Username";
             // 
             // passwordTextBox
             // 
@@ -49,6 +50,7 @@
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(100, 27);
             this.passwordTextBox.TabIndex = 1;
+            this.passwordTextBox.Text = "Password";
             // 
             // loginButton
             // 

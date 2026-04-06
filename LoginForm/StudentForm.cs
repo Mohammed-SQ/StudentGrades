@@ -48,6 +48,9 @@ namespace StudentGradesManagementSystem
                 return;
             }
 
+            if (!ValidateGradesRange(g1, g2, g3, g4, g5))
+                return;
+
             int row = SharedData.studentCount;
 
             SharedData.studentIDs[row] = studentIdTextBox.Text.Trim();
@@ -66,12 +69,34 @@ namespace StudentGradesManagementSystem
 
         private void viewButton_Click(object sender, EventArgs e)
         {
-            if (SharedData.studentCount >= 10)
+            string output = "";
+
+            output += "Student ID: " + studentIdTextBox.Text + "\n";
+            output += "Student Name: " + studentNameTextBox.Text + "\n\n";
+
+            for (int i = 0; i < SharedData.courses.Length; i++)
             {
-                MessageBox.Show("Maximum number of students reached.");
-                return;
+                output += SharedData.courses[i] + ": ";
+
+                if (i == 0)
+                    output += grade1TextBox.Text;
+                else if (i == 1)
+                    output += grade2TextBox.Text;
+                else if (i == 2)
+                    output += grade3TextBox.Text;
+                else if (i == 3)
+                    output += grade4TextBox.Text;
+                else if (i == 4)
+                    output += grade5TextBox.Text;
+
+                output += "\n";
             }
 
+            resultLabel.Text = output;
+        }
+
+        private void gpaButton_Click(object sender, EventArgs e)
+        {
             int g1, g2, g3, g4, g5;
 
             if (!int.TryParse(grade1TextBox.Text, out g1) ||
@@ -84,40 +109,39 @@ namespace StudentGradesManagementSystem
                 return;
             }
 
-            int row = SharedData.studentCount;
+            if (!ValidateGradesRange(g1, g2, g3, g4, g5))
+                return;
 
-            SharedData.studentIDs[row] = studentIdTextBox.Text.Trim();
-            SharedData.studentNames[row] = studentNameTextBox.Text.Trim();
+            double average = (g1 + g2 + g3 + g4 + g5) / 5.0;
+            double gpa;
 
-            SharedData.allGrades[row, 0] = g1;
-            SharedData.allGrades[row, 1] = g2;
-            SharedData.allGrades[row, 2] = g3;
-            SharedData.allGrades[row, 3] = g4;
-            SharedData.allGrades[row, 4] = g5;
+            if (average >= 90)
+                gpa = 4;
+            else if (average >= 80)
+                gpa = 3;
+            else if (average >= 70)
+                gpa = 2;
+            else if (average >= 60)
+                gpa = 1;
+            else
+                gpa = 0;
 
-            SharedData.studentCount++;
-
-            MessageBox.Show("Student grades saved.");
+            resultLabel.Text = "GPA = " + gpa.ToString("F2");
         }
 
-        private void gpaButton_Click(object sender, EventArgs e)
+        
+        private bool ValidateGradesRange(params int[] grades)
         {
-            string output = "";
-
-            for (int i = 0; i < SharedData.courses.Length; i++)
+            foreach (var g in grades)
             {
-                output += SharedData.courses[i] + ": ";
-
-                if (i == 0) output += grade1TextBox.Text;
-                else if (i == 1) output += grade2TextBox.Text;
-                else if (i == 2) output += grade3TextBox.Text;
-                else if (i == 3) output += grade4TextBox.Text;
-                else if (i == 4) output += grade5TextBox.Text;
-
-                output += "\n";
+                if (g < 0 || g > 100)
+                {
+                    MessageBox.Show("Grades must be between 0 and 100.");
+                    return false;
+                }
             }
 
-            
+            return true;
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -132,7 +156,7 @@ namespace StudentGradesManagementSystem
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Group Members:\nSaleh - 20210001\nMember2 - ID\nMember3 - ID");
+            MessageBox.Show("Group Members:\nRidha - 202013940\nMohammed - 202536470\nAli - 202251460");
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

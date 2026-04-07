@@ -17,12 +17,6 @@ namespace StudentGradesManagementSystem
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void loginButton_Click(object sender, EventArgs e)
         {
             string username = usernameTextBox.Text.Trim();
@@ -42,6 +36,8 @@ namespace StudentGradesManagementSystem
                     if (username == parts[0] && password == parts[1])
                     {
                         found = true;
+                        SharedData.CurrentUserID = parts[3];
+                        SharedData.CurrentUserName = parts[0];
 
                         if (parts[2] == "Student")
                         {
@@ -53,16 +49,14 @@ namespace StudentGradesManagementSystem
                             FacultyForm ff = new FacultyForm();
                             ff.ShowDialog();
                         }
-
                         break;
                     }
-                }
-
+                }          
                 inputFile.Close();
 
                 if (!found)
                 {
-                    MessageBox.Show("Invalid username or password.");
+                    MessageBox.Show("Invalid username or password.", "Data Save Error");
                 }
             }
             catch (Exception ex)

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace StudentGradesManagementSystem
 {
@@ -20,133 +21,80 @@ namespace StudentGradesManagementSystem
 
         private void StudentForm_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void resultLabelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            txtStudentID.Text = SharedData.CurrentUserID;
+            txtStudentName.Text = SharedData.CurrentUserName;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (SharedData.studentCount >= 10)
+            if (resultLabel.Text == "Your GPA: 0.00" || string.IsNullOrEmpty(resultLabel.Text))
             {
-                MessageBox.Show("Maximum number of students reached.");
+                MessageBox.Show("Please click 'Calculate GPA' first to confirm your final score.", "Data Save Error");
                 return;
             }
-
-            int g1, g2, g3, g4, g5;
-
-            if (!int.TryParse(grade1TextBox.Text, out g1) ||
-                !int.TryParse(grade2TextBox.Text, out g2) ||
-                !int.TryParse(grade3TextBox.Text, out g3) ||
-                !int.TryParse(grade4TextBox.Text, out g4) ||
-                !int.TryParse(grade5TextBox.Text, out g5))
-            {
-                MessageBox.Show("Enter valid numeric grades.");
-                return;
-            }
-
-            if (!ValidateGradesRange(g1, g2, g3, g4, g5))
-                return;
-
             int row = SharedData.studentCount;
 
-            SharedData.studentIDs[row] = studentIdTextBox.Text.Trim();
-            SharedData.studentNames[row] = studentNameTextBox.Text.Trim();
-
-            SharedData.allGrades[row, 0] = g1;
-            SharedData.allGrades[row, 1] = g2;
-            SharedData.allGrades[row, 2] = g3;
-            SharedData.allGrades[row, 3] = g4;
-            SharedData.allGrades[row, 4] = g5;
-
-            SharedData.studentCount++;
-
-            MessageBox.Show("Student grades saved.");
-        }
-
-        private void viewButton_Click(object sender, EventArgs e)
-        {
-            string output = "";
-
-            output += "Student ID: " + studentIdTextBox.Text + "\n";
-            output += "Student Name: " + studentNameTextBox.Text + "\n\n";
-
-            for (int i = 0; i < SharedData.courses.Length; i++)
+            if (row >= 10)
             {
-                output += SharedData.courses[i] + ": ";
-
-                if (i == 0)
-                    output += grade1TextBox.Text;
-                else if (i == 1)
-                    output += grade2TextBox.Text;
-                else if (i == 2)
-                    output += grade3TextBox.Text;
-                else if (i == 3)
-                    output += grade4TextBox.Text;
-                else if (i == 4)
-                    output += grade5TextBox.Text;
-
-                output += "\n";
+                MessageBox.Show("System Error: Maximum student capacity (10) reached.", "Data Save Error");
+                return;
             }
 
-            resultLabel.Text = output;
+            SharedData.studentIDs[row] = txtStudentID.Text;
+            SharedData.studentNames[row] = txtStudentName.Text;
+
+            // Save grades to the 2D array
+            SharedData.allGrades[row, 0] = GetGradePoints(cmbGrade1.Text);
+            SharedData.allGrades[row, 1] = GetGradePoints(cmbGrade2.Text);
+            SharedData.allGrades[row, 2] = GetGradePoints(cmbGrade3.Text);
+            SharedData.allGrades[row, 3] = GetGradePoints(cmbGrade4.Text);
+            SharedData.allGrades[row, 4] = GetGradePoints(cmbGrade5.Text);
+
+            string gpaText = resultLabel.Text.Replace("Your GPA: ", "").Trim();
+            SharedData.allGPA[row] = double.Parse(gpaText);
+
+            SharedData.studentCount++;
+            MessageBox.Show($"Grades for {txtStudentName.Text} saved!");
+            this.Close();
+        }
+
+        private int GetGradePoints(string letter)
+        {
+            switch (letter)
+            {
+                case "A": return 4;
+                case "B": return 3;
+                case "C": return 2;
+                case "D": return 1;
+                case "F": return 0;
+                default: return 0;
+            }
         }
 
         private void gpaButton_Click(object sender, EventArgs e)
         {
-            int g1, g2, g3, g4, g5;
-
-            if (!int.TryParse(grade1TextBox.Text, out g1) ||
-                !int.TryParse(grade2TextBox.Text, out g2) ||
-                !int.TryParse(grade3TextBox.Text, out g3) ||
-                !int.TryParse(grade4TextBox.Text, out g4) ||
-                !int.TryParse(grade5TextBox.Text, out g5))
+            if (cmbGrade1.SelectedIndex == -1 || cmbGrade2.SelectedIndex == -1 ||
+                cmbGrade3.SelectedIndex == -1 || cmbGrade4.SelectedIndex == -1 ||
+                cmbGrade5.SelectedIndex == -1)
             {
-                MessageBox.Show("Enter valid numeric grades.");
+                MessageBox.Show("Please select a grade for all courses.");
                 return;
             }
 
-            if (!ValidateGradesRange(g1, g2, g3, g4, g5))
-                return;
+            // Use a 1D array to hold the points (Requirement Check!)
+            int[] points = new int[5];
+            points[0] = GetGradePoints(cmbGrade1.SelectedItem.ToString());
+            points[1] = GetGradePoints(cmbGrade2.SelectedItem.ToString());
+            points[2] = GetGradePoints(cmbGrade3.SelectedItem.ToString());
+            points[3] = GetGradePoints(cmbGrade4.SelectedItem.ToString());
+            points[4] = GetGradePoints(cmbGrade5.SelectedItem.ToString());
 
-            double average = (g1 + g2 + g3 + g4 + g5) / 5.0;
-            double gpa;
+            double sum = 0;
+            foreach (int p in points) { sum += p; }
 
-            if (average >= 90)
-                gpa = 4;
-            else if (average >= 80)
-                gpa = 3;
-            else if (average >= 70)
-                gpa = 2;
-            else if (average >= 60)
-                gpa = 1;
-            else
-                gpa = 0;
+            double gpa = sum / points.Length;
 
-            resultLabel.Text = "GPA = " + gpa.ToString("F2");
-        }
-
-        
-        private bool ValidateGradesRange(params int[] grades)
-        {
-            foreach (var g in grades)
-            {
-                if (g < 0 || g > 100)
-                {
-                    MessageBox.Show("Grades must be between 0 and 100.");
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
+            resultLabel.Text = "Your GPA: " + gpa.ToString("F2");
         }
 
         private void returnToLoginToolStripMenuItem_Click(object sender, EventArgs e)

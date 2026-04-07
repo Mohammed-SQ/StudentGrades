@@ -1,0 +1,29 @@
+Ridha – 202013940
+
+Primary Task: Developed the Student Form.
+
+Design: Designed the UI layout for student data entry and grade selection.
+
+Logic: Implemented the logic for saving student records into the shared data matrix.
+
+Validation: Added input validation to ensure student IDs and names are correctly formatted before saving.
+
+Mohammed – 202536470
+
+Primary Task: Developed the Faculty Page.
+
+Design: Designed the Student Grades View Matrix and the Detailed Profile panel.
+
+Logic: Implemented method to display all student records in the DataGridView.
+
+Features: Developed the "About" and "Help" menu logic to show team information.
+
+Ali – 202251460
+
+Primary Task: Developed the Login Form and assisted with the Faculty Page.
+
+Security: Implemented the user authentication system and reading from the users.txt file.
+
+Logic: Collaborated on the SharedData class structure to manage global arrays for IDs, names, and grades.
+
+Features: Developed the Search functionality on the Faculty page and the GPA calculation display logic.

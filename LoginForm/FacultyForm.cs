@@ -25,20 +25,24 @@ namespace StudentGradesManagementSystem
         }
         private void PopulateTable()
         {
-            dgvStudents.Rows.Clear();
+            lvStudents.Items.Clear();
 
             for (int i = 0; i < SharedData.studentCount; i++)
             {
-                dgvStudents.Rows.Add(
-                    SharedData.studentIDs[i],
-                    SharedData.studentNames[i],
-                    GetLetterGrade(SharedData.allGrades[i, 0]),
-                    GetLetterGrade(SharedData.allGrades[i, 1]),
-                    GetLetterGrade(SharedData.allGrades[i, 2]),
-                    GetLetterGrade(SharedData.allGrades[i, 3]),
-                    GetLetterGrade(SharedData.allGrades[i, 4]),
-                    SharedData.allGPA[i].ToString("F2")
-                );
+                string[] rowData = new string[]
+                {
+            SharedData.studentIDs[i],
+            SharedData.studentNames[i],
+            GetLetterGrade(SharedData.allGrades[i, 0]),
+            GetLetterGrade(SharedData.allGrades[i, 1]),
+            GetLetterGrade(SharedData.allGrades[i, 2]),
+            GetLetterGrade(SharedData.allGrades[i, 3]),
+            GetLetterGrade(SharedData.allGrades[i, 4]),
+            SharedData.allGPA[i].ToString("F2")
+                };
+
+                ListViewItem item = new ListViewItem(rowData);
+                lvStudents.Items.Add(item);
             }
         }
         private void searchButton_Click(object sender, EventArgs e)
@@ -49,8 +53,8 @@ namespace StudentGradesManagementSystem
             {
                 if (SharedData.studentIDs[i] == searchID)
                 {
-                    txtProfileName.Text = SharedData.studentNames[i];
-                    txtProfileID.Text = SharedData.studentIDs[i];
+                    lblProfileName.Text = SharedData.studentNames[i];
+                    lblProfileID.Text = SharedData.studentIDs[i];
 
                     lblGrade1.Text = GetLetterGrade(SharedData.allGrades[i, 0]);
                     lblGrade2.Text = GetLetterGrade(SharedData.allGrades[i, 1]);
@@ -88,7 +92,10 @@ namespace StudentGradesManagementSystem
 
         private void returnToLoginToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            Form1 login = new Form1();
+            login.Show();
             this.Close();
         }
+
     }
 }

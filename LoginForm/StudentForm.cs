@@ -21,8 +21,8 @@ namespace StudentGradesManagementSystem
 
         private void StudentForm_Load(object sender, EventArgs e)
         {
-            txtStudentID.Text = SharedData.CurrentUserID;
-            txtStudentName.Text = SharedData.CurrentUserName;
+            lblProfileID.Text = SharedData.CurrentUserID;
+            lblProfileName.Text = SharedData.CurrentUserName;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -40,10 +40,9 @@ namespace StudentGradesManagementSystem
                 return;
             }
 
-            SharedData.studentIDs[row] = txtStudentID.Text;
-            SharedData.studentNames[row] = txtStudentName.Text;
+            SharedData.studentIDs[row] = lblProfileID.Text;
+            SharedData.studentNames[row] = lblProfileName.Text;
 
-            // Save grades to the 2D array
             SharedData.allGrades[row, 0] = GetGradePoints(cmbGrade1.Text);
             SharedData.allGrades[row, 1] = GetGradePoints(cmbGrade2.Text);
             SharedData.allGrades[row, 2] = GetGradePoints(cmbGrade3.Text);
@@ -54,7 +53,9 @@ namespace StudentGradesManagementSystem
             SharedData.allGPA[row] = double.Parse(gpaText);
 
             SharedData.studentCount++;
-            MessageBox.Show($"Grades for {txtStudentName.Text} saved!");
+            MessageBox.Show($"Grades for {lblProfileName.Text} saved!");
+            Form1 login = new Form1();
+            login.Show();
             this.Close();
         }
 
@@ -70,6 +71,18 @@ namespace StudentGradesManagementSystem
                 default: return 0;
             }
         }
+        private string GetLetterGrade(int points)
+        {
+            switch (points)
+            {
+                case 4: return "A";
+                case 3: return "B";
+                case 2: return "C";
+                case 1: return "D";
+                case 0: return "F";
+                default: return "N/A";
+            }
+        }
 
         private void gpaButton_Click(object sender, EventArgs e)
         {
@@ -81,7 +94,6 @@ namespace StudentGradesManagementSystem
                 return;
             }
 
-            // Use a 1D array to hold the points (Requirement Check!)
             int[] points = new int[5];
             points[0] = GetGradePoints(cmbGrade1.SelectedItem.ToString());
             points[1] = GetGradePoints(cmbGrade2.SelectedItem.ToString());
@@ -99,6 +111,8 @@ namespace StudentGradesManagementSystem
 
         private void returnToLoginToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form1 login = new Form1();
+            login.Show();
             this.Close();
         }
 
@@ -110,6 +124,33 @@ namespace StudentGradesManagementSystem
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        private void viewGpaButton_Click(object sender, EventArgs e)
+        {
+            bool found = false;
+            string currentID = SharedData.CurrentUserID;
+
+            for (int i = 0; i < SharedData.studentCount; i++)
+            {
+                if (SharedData.studentIDs[i] == currentID)
+                {
+                    resultLabel.Text = "Your GPA: " + SharedData.allGPA[i].ToString("F2");
+
+                    cmbGrade1.Text = GetLetterGrade(SharedData.allGrades[i, 0]);
+                    cmbGrade2.Text = GetLetterGrade(SharedData.allGrades[i, 1]);
+                    cmbGrade3.Text = GetLetterGrade(SharedData.allGrades[i, 2]);
+                    cmbGrade4.Text = GetLetterGrade(SharedData.allGrades[i, 3]);
+                    cmbGrade5.Text = GetLetterGrade(SharedData.allGrades[i, 4]);
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                MessageBox.Show("No saved data found.");
+            }
         }
     }
 }

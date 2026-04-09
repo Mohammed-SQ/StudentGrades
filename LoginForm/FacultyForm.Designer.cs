@@ -32,11 +32,21 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblFinalGPA = new System.Windows.Forms.Label();
             this.lblFacultyName = new System.Windows.Forms.Label();
-            this.dgvStudents = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lvStudents = new System.Windows.Forms.ListView();
+            this.colID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colMIS = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colICS = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colMATH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colIAS = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colENG = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colGPA = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
             this.lblTotalStudents = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblProfileID = new System.Windows.Forms.Label();
+            this.lblProfileName = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblGrade5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -59,23 +69,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtProfileID = new System.Windows.Forms.TextBox();
-            this.txtProfileName = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnToLoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colICS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMATH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colENG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -129,35 +128,77 @@
             this.lblFacultyName.TabIndex = 4;
             this.lblFacultyName.Text = "Logged in as Faculty: ";
             // 
-            // dgvStudents
-            // 
-            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.StudentID,
-            this.StudentName,
-            this.colMIS,
-            this.colICS,
-            this.colMATH,
-            this.colIAS,
-            this.colENG,
-            this.colGPA});
-            this.dgvStudents.Location = new System.Drawing.Point(0, 57);
-            this.dgvStudents.Name = "dgvStudents";
-            this.dgvStudents.Size = new System.Drawing.Size(540, 159);
-            this.dgvStudents.TabIndex = 5;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lvStudents);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtSearchID);
             this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Controls.Add(this.dgvStudents);
             this.groupBox1.Location = new System.Drawing.Point(12, 54);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(540, 234);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search Student & View Grades";
+            // 
+            // lvStudents
+            // 
+            this.lvStudents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colID,
+            this.colName,
+            this.colMIS,
+            this.colICS,
+            this.colMATH,
+            this.colIAS,
+            this.colENG,
+            this.colGPA});
+            this.lvStudents.FullRowSelect = true;
+            this.lvStudents.GridLines = true;
+            this.lvStudents.HideSelection = false;
+            this.lvStudents.Location = new System.Drawing.Point(0, 50);
+            this.lvStudents.Name = "lvStudents";
+            this.lvStudents.Size = new System.Drawing.Size(540, 184);
+            this.lvStudents.TabIndex = 16;
+            this.lvStudents.UseCompatibleStateImageBehavior = false;
+            this.lvStudents.View = System.Windows.Forms.View.Details;
+            // 
+            // colID
+            // 
+            this.colID.Text = "Student ID";
+            this.colID.Width = 65;
+            // 
+            // colName
+            // 
+            this.colName.Text = "Student Name";
+            this.colName.Width = 80;
+            // 
+            // colMIS
+            // 
+            this.colMIS.Text = "MIS302";
+            this.colMIS.Width = 52;
+            // 
+            // colICS
+            // 
+            this.colICS.Text = "ICS104";
+            this.colICS.Width = 51;
+            // 
+            // colMATH
+            // 
+            this.colMATH.Text = "MATH101";
+            this.colMATH.Width = 65;
+            // 
+            // colIAS
+            // 
+            this.colIAS.Text = "IAS212";
+            // 
+            // colENG
+            // 
+            this.colENG.Text = "ENG102";
+            // 
+            // colGPA
+            // 
+            this.colGPA.Text = "Calculated GPA";
+            this.colGPA.Width = 90;
             // 
             // label3
             // 
@@ -180,6 +221,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lblProfileID);
+            this.groupBox3.Controls.Add(this.lblProfileName);
             this.groupBox3.Controls.Add(this.panel9);
             this.groupBox3.Controls.Add(this.panel7);
             this.groupBox3.Controls.Add(this.panel10);
@@ -192,8 +235,6 @@
             this.groupBox3.Controls.Add(this.panel1);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.txtProfileID);
-            this.groupBox3.Controls.Add(this.txtProfileName);
             this.groupBox3.Controls.Add(this.lblFinalGPA);
             this.groupBox3.Location = new System.Drawing.Point(558, 54);
             this.groupBox3.Name = "groupBox3";
@@ -201,6 +242,22 @@
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Student Grades (Selected Record)";
+            // 
+            // lblProfileID
+            // 
+            this.lblProfileID.AutoSize = true;
+            this.lblProfileID.Location = new System.Drawing.Point(100, 23);
+            this.lblProfileID.Name = "lblProfileID";
+            this.lblProfileID.Size = new System.Drawing.Size(0, 13);
+            this.lblProfileID.TabIndex = 16;
+            // 
+            // lblProfileName
+            // 
+            this.lblProfileName.AutoSize = true;
+            this.lblProfileName.Location = new System.Drawing.Point(100, 50);
+            this.lblProfileName.Name = "lblProfileName";
+            this.lblProfileName.Size = new System.Drawing.Size(0, 13);
+            this.lblProfileName.TabIndex = 17;
             // 
             // panel9
             // 
@@ -400,23 +457,6 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Student ID:";
             // 
-            // txtProfileID
-            // 
-            this.txtProfileID.Location = new System.Drawing.Point(98, 47);
-            this.txtProfileID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProfileID.Multiline = true;
-            this.txtProfileID.Name = "txtProfileID";
-            this.txtProfileID.Size = new System.Drawing.Size(68, 20);
-            this.txtProfileID.TabIndex = 0;
-            // 
-            // txtProfileName
-            // 
-            this.txtProfileName.Location = new System.Drawing.Point(98, 23);
-            this.txtProfileName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProfileName.Name = "txtProfileName";
-            this.txtProfileName.Size = new System.Drawing.Size(68, 20);
-            this.txtProfileName.TabIndex = 1;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -468,53 +508,6 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
-            // StudentID
-            // 
-            this.StudentID.HeaderText = "StudentID";
-            this.StudentID.Name = "StudentID";
-            this.StudentID.Width = 80;
-            // 
-            // StudentName
-            // 
-            this.StudentName.HeaderText = "StudentName";
-            this.StudentName.Name = "StudentName";
-            // 
-            // colMIS
-            // 
-            this.colMIS.HeaderText = "MIS302 Grade";
-            this.colMIS.Name = "colMIS";
-            this.colMIS.Width = 50;
-            // 
-            // colICS
-            // 
-            this.colICS.HeaderText = "ICS104 Grade";
-            this.colICS.Name = "colICS";
-            this.colICS.Width = 50;
-            // 
-            // colMATH
-            // 
-            this.colMATH.HeaderText = "MATH101 Grade";
-            this.colMATH.Name = "colMATH";
-            this.colMATH.Width = 55;
-            // 
-            // colIAS
-            // 
-            this.colIAS.HeaderText = "IAS212 Grade";
-            this.colIAS.Name = "colIAS";
-            this.colIAS.Width = 50;
-            // 
-            // colENG
-            // 
-            this.colENG.HeaderText = "ENG102 Grade";
-            this.colENG.Name = "colENG";
-            this.colENG.Width = 50;
-            // 
-            // colGPA
-            // 
-            this.colGPA.HeaderText = "Calculated GPA";
-            this.colGPA.Name = "colGPA";
-            this.colGPA.Width = 50;
-            // 
             // FacultyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,7 +522,6 @@
             this.Name = "FacultyForm";
             this.Text = "FacultyForm";
             this.Load += new System.EventHandler(this.FacultyForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -567,14 +559,11 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblFinalGPA;
         private System.Windows.Forms.Label lblFacultyName;
-        private System.Windows.Forms.DataGridView dgvStudents;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblTotalStudents;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtProfileID;
-        private System.Windows.Forms.TextBox txtProfileName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
@@ -602,13 +591,16 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StudentID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StudentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMIS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colICS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMATH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIAS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colENG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colGPA;
+        private System.Windows.Forms.ListView lvStudents;
+        private System.Windows.Forms.ColumnHeader colID;
+        private System.Windows.Forms.ColumnHeader colName;
+        private System.Windows.Forms.ColumnHeader colMIS;
+        private System.Windows.Forms.ColumnHeader colICS;
+        private System.Windows.Forms.ColumnHeader colMATH;
+        private System.Windows.Forms.ColumnHeader colIAS;
+        private System.Windows.Forms.ColumnHeader colENG;
+        private System.Windows.Forms.ColumnHeader colGPA;
+        private System.Windows.Forms.Label lblProfileID;
+        private System.Windows.Forms.Label lblProfileName;
     }
 }

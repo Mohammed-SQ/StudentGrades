@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtStudentID = new System.Windows.Forms.TextBox();
-            this.txtStudentName = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.gpaButton = new System.Windows.Forms.Button();
             this.resultLabel = new System.Windows.Forms.Label();
@@ -51,37 +49,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblProfileID = new System.Windows.Forms.Label();
+            this.lblProfileName = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.viewGpaButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtStudentID
-            // 
-            this.txtStudentID.Location = new System.Drawing.Point(98, 54);
-            this.txtStudentID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtStudentID.Multiline = true;
-            this.txtStudentID.Name = "txtStudentID";
-            this.txtStudentID.Size = new System.Drawing.Size(68, 20);
-            this.txtStudentID.TabIndex = 0;
-            // 
-            // txtStudentName
-            // 
-            this.txtStudentName.Location = new System.Drawing.Point(98, 23);
-            this.txtStudentName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtStudentName.Name = "txtStudentName";
-            this.txtStudentName.Size = new System.Drawing.Size(68, 20);
-            this.txtStudentName.TabIndex = 1;
-            // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(63, 28);
+            this.saveButton.Location = new System.Drawing.Point(214, 22);
             this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(74, 29);
@@ -92,7 +74,7 @@
             // 
             // gpaButton
             // 
-            this.gpaButton.Location = new System.Drawing.Point(5, 18);
+            this.gpaButton.Location = new System.Drawing.Point(5, 22);
             this.gpaButton.Margin = new System.Windows.Forms.Padding(2);
             this.gpaButton.Name = "gpaButton";
             this.gpaButton.Size = new System.Drawing.Size(122, 29);
@@ -104,7 +86,7 @@
             // resultLabel
             // 
             this.resultLabel.AutoSize = true;
-            this.resultLabel.Location = new System.Drawing.Point(151, 26);
+            this.resultLabel.Location = new System.Drawing.Point(302, 30);
             this.resultLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.resultLabel.Name = "resultLabel";
             this.resultLabel.Size = new System.Drawing.Size(81, 13);
@@ -303,16 +285,32 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblProfileID);
+            this.groupBox2.Controls.Add(this.lblProfileName);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.txtStudentID);
-            this.groupBox2.Controls.Add(this.txtStudentName);
             this.groupBox2.Location = new System.Drawing.Point(321, 49);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.Size = new System.Drawing.Size(200, 83);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Student Information";
+            // 
+            // lblProfileID
+            // 
+            this.lblProfileID.AutoSize = true;
+            this.lblProfileID.Location = new System.Drawing.Point(94, 53);
+            this.lblProfileID.Name = "lblProfileID";
+            this.lblProfileID.Size = new System.Drawing.Size(0, 13);
+            this.lblProfileID.TabIndex = 18;
+            // 
+            // lblProfileName
+            // 
+            this.lblProfileName.AutoSize = true;
+            this.lblProfileName.Location = new System.Drawing.Point(100, 23);
+            this.lblProfileName.Name = "lblProfileName";
+            this.lblProfileName.Size = new System.Drawing.Size(0, 13);
+            this.lblProfileName.TabIndex = 19;
             // 
             // label7
             // 
@@ -332,26 +330,29 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Student ID:";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.saveButton);
-            this.groupBox3.Location = new System.Drawing.Point(321, 155);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 78);
-            this.groupBox3.TabIndex = 14;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Save Grades";
-            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.viewGpaButton);
+            this.groupBox4.Controls.Add(this.saveButton);
             this.groupBox4.Controls.Add(this.gpaButton);
             this.groupBox4.Controls.Add(this.resultLabel);
             this.groupBox4.Location = new System.Drawing.Point(12, 239);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(288, 57);
+            this.groupBox4.Size = new System.Drawing.Size(403, 57);
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Calculate GPA";
+            // 
+            // viewGpaButton
+            // 
+            this.viewGpaButton.Location = new System.Drawing.Point(131, 22);
+            this.viewGpaButton.Margin = new System.Windows.Forms.Padding(2);
+            this.viewGpaButton.Name = "viewGpaButton";
+            this.viewGpaButton.Size = new System.Drawing.Size(74, 29);
+            this.viewGpaButton.TabIndex = 11;
+            this.viewGpaButton.Text = "View";
+            this.viewGpaButton.UseVisualStyleBackColor = true;
+            this.viewGpaButton.Click += new System.EventHandler(this.viewGpaButton_Click);
             // 
             // StudentForm
             // 
@@ -359,7 +360,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 308);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
@@ -374,7 +374,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
@@ -383,9 +382,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtStudentID;
-        private System.Windows.Forms.TextBox txtStudentName;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button gpaButton;
         private System.Windows.Forms.Label resultLabel;
@@ -409,7 +405,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button viewGpaButton;
+        private System.Windows.Forms.Label lblProfileID;
+        private System.Windows.Forms.Label lblProfileName;
     }
 }

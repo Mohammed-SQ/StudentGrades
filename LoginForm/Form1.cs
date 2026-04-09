@@ -38,7 +38,7 @@ namespace StudentGradesManagementSystem
                         found = true;
                         SharedData.CurrentUserID = parts[3];
                         SharedData.CurrentUserName = parts[0];
-
+                        this.Hide();
                         if (parts[2] == "Student")
                         {
                             StudentForm sf = new StudentForm();
@@ -56,12 +56,12 @@ namespace StudentGradesManagementSystem
 
                 if (!found)
                 {
-                    MessageBox.Show("Invalid username or password.", "Data Save Error");
+                    lblError.Text = "Invalid username or password";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                lblError.Text = "File Error: " + ex.Message;
             }
         }
 
